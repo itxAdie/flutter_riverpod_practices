@@ -57,11 +57,16 @@ const List<Product> allProducts = [
 //   return allProducts;
 // });
 
-final reducedProductProvider = Provider((ref) {
-  return allProducts.where((p) => p.price < 500).toList();
-});
+// final reducedProductProvider = Provider((ref) {
+//   return allProducts.where((p) => p.price < 500).toList();
+// });
 
 @riverpod
 List<Product> products(ref) {
   return allProducts;
+}
+
+@riverpod
+List<Product> cartProducts(ref) {
+  return allProducts.where((p) => p.price < 500).toList();
 }

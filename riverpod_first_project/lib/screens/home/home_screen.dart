@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:riverpod_first_project/providers/product_provider.dart';
-
+import '../../providers/cart_provider.dart';
 import '../../providers/product_provider.dart';
 import '../../shared/cart_icon.dart';
 
@@ -11,6 +10,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final allProducts = ref.watch(productsProvider);
+    final cartProducts = ref.watch(cartNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Simple Shop with Riverpod'),
@@ -28,14 +28,15 @@ class HomeScreen extends ConsumerWidget {
           ),
           itemBuilder: (context, index) {
             return Container(
-              padding: const EdgeInsets.all(20),
+              // height: MediaQuery.sizeOf(context).height * 0.40,
+              padding: const EdgeInsets.all(10),
               color: Colors.blueGrey.withOpacity(0.05),
               child: Column(
                 children: [
                   Image.asset(
                     allProducts[index].image,
-                    height: 80,
-                    width: 80,
+                    height: 60,
+                    width: 60,
                   ),
                   Text(
                     allProducts[index].title,
@@ -43,6 +44,21 @@ class HomeScreen extends ConsumerWidget {
                   Text(
                     'Rs ${allProducts[index].price.toString()}',
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+
+                  ///Add or Remove Logic
+                  if (cartProducts.contains(allProducts[index]))
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('Remove'),
+                    ),
+                  if (!cartProducts.contains(allProducts[index]))
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text('Add to Cart'),
+                    ),
                 ],
               ),
             );
