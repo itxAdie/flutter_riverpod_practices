@@ -1,0 +1,16 @@
+{
+    "titleValidationError": "Title is required.",
+    "amountValidationError": "Enter a valid amount greater than zero.",
+    "pageTitle": "Your Balance",
+    "dateColumn": "Date",
+    "descriptionColumn": "Description",
+    "amountColumn": "Amount",
+    "addTransactionTitle": "Add Transaction",
+    "titleInputField": "Title",
+    "amountInputField": "Amount",
+    "typeInputField": "Type",
+    "dateInputField": "Select Date",
+    "addButton": "Submit",
+    "cancelButton": "Cancel",
+    "invalidMessage": "Invalid input"
+}
